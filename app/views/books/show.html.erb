@@ -1,15 +1,55 @@
-<h2><%= @book.title %></h2>
-<h3><%= @book.author %></h3>
-<h4>カテゴリー: <%= @book.category.name %></h4>
-<p><%= @book.description %></p>
+<div class="row">
 
-<%= link_to "Back", root_path %>
+  <div class="col-md-4">
+    <%= image_tag @book.book_img.url(:book_show), class: "book_show" %>
+  </div>
 
-<% if user_signed_in? %>
-  <% if @book.id == current_user.id %>
+  <div class="col-md-8">
 
-    <%= link_to "Edit", edit_book_path(@book)%>
-    <%= link_to "Delete", book_path(@book), method: :delete, data: { confirm: "本当に削除してよろしいですか?" }%>
-  <% end %>
+    <div class="book-info">
+      <h2 class="book-title"><%= @book.title %></h2>
+      <h3 class="book-author"><span>著</span> <%= @book.author %></h3>
+      <h3 class="avg-rating">平均評価</h3>
+  		<h3><%= @average_review %></h3>
+      <span class="number-of-reviews"><%= @book.reviews.count %>件のレビュー</span>
+      <p class="book-description"><%= @book.description %></p>
+    </div>
 
-<% end %>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-md-4">
+
+    <div class="reviews">
+      <h1>レビュー</h1>
+      <%= render @book.reviews %>
+
+      <div>
+        <%= link_to "レビューを追加する", new_book_review_path(@book), class: "btn btn-custom" %>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="links btn-group" >
+
+  <%= link_to "戻る", root_path, class: "btn btn-custom" %>
+
+    <% if user_signed_in? %>
+
+  		<% if @book.user_id == current_user.id %>
+
+  			<%= link_to "編集", edit_book_path(@book), class: "btn btn-custom" %>
+  			<%= link_to "削除", book_path(@book), method: :delete, data: { confirm: "本当に消去しますか?" }, class: "btn btn-custom" %>
+
+  	  <% end %>
+
+   <% end %>
+
+</div>

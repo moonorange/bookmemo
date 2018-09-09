@@ -1,7 +1,9 @@
+
 <%= simple_form_for @book, :html => { :multipart => true } do |f| %>
-	<%= select_tag(:category_id, options_for_select(@categories), :prompt => "本のカテゴリーを選んでください") %>
-	<%= f.input :title ,label: "Book Title" %>
-	<%= f.input :description %>
-	<%= f.input :author %>
-	<%= f.button :submit %>
+	<%= select_tag(:category_id, options_for_select(@categories), :prompt => "カテゴリーを選んでください") %>
+	<%= f.file_field :book_img %>
+	<%= f.input :title, label: "本のタイトル" %>
+	<%= f.input :description, label: "内容説明" %>
+	<%= f.input :author, label: "著者" %>
+	<%= f.button :submit, class: 'btn-custom2' %>
 <% end %>

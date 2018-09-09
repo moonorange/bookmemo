@@ -1,0 +1,5 @@
+<%= simple_form_for( [@book, @book.reviews.build]) do |f| %>
+  <%= f.input :rating, label: "５段階評価" %>
+  <%= f.input :comment, label: "コメント" %>
+  <%= f.button :submit, "レビューの作成", class: "btn-custom2" %>
+<% end %>

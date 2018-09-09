@@ -8,16 +8,16 @@
 
   <div class="form-inputs">
     <%= f.input :password,
-                label: "New password",
+                label: "新しいパスワード",
                 required: true,
                 autofocus: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation, label: "Confirm your new password", required: true %>
+                input_html: { autocomplete: "新しいパスワード" } %>
+    <%= f.input :password_confirmation, label: "パスワードの確認", required: true %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Change my password" %>
+    <%= f.button :submit, "パスワードを変更する" %>
   </div>
 <% end %>
 
